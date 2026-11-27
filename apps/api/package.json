@@ -1,0 +1,10 @@
+{
+  "name": "@xss-lab/api",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0",
+    "@xss-lab/shared-config": "*",
+    "@xss-lab/shared-types": "*"
+  }
+}

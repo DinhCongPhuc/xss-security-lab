@@ -1,0 +1,5 @@
+{
+  "name": "@xss-lab/shared-config",
+  "private": true,
+  "type": "module"
+}
