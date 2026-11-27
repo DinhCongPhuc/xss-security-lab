@@ -1,11 +1,29 @@
 import { expect, test } from "@playwright/test";
+import { e2ePorts } from "../e2e-ports.ts";
 
 test("shell renders and navigation works without page errors", async ({
   page,
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  const hmr = page.waitForEvent("websocket", {
+    predicate: (socket) =>
+      socket.url().startsWith("ws://localhost:" + e2ePorts.WEB_PORT + "/"),
+  });
   await page.goto("/");
+  expect((await hmr).isClosed()).toBe(false);
+  expect(
+    await page.evaluate(async () => {
+      const fonts = await Promise.all([
+        document.fonts.load('16px "Inter Variable"', "Tổng quan"),
+        document.fonts.load('16px "JetBrains Mono Variable"', "Mã"),
+      ]);
+      return fonts.every(
+        (faces) =>
+          faces.length > 0 && faces.every((face) => face.status === "loaded"),
+      );
+    }),
+  ).toBe(true);
   await expect(page.getByRole("heading", { name: "Tổng quan" })).toBeVisible();
   for (const label of [
     "Kiến thức",
@@ -43,12 +61,14 @@ test("all services respond over both loopback address families", async ({
   request,
 }) => {
   for (const host of ["127.0.0.1", "[::1]", "localhost"]) {
-    const web = await request.get("http://" + host + ":5173/");
+    const web = await request.get(
+      "http://" + host + ":" + e2ePorts.WEB_PORT + "/",
+    );
     expect(web.ok()).toBe(true);
     for (const [port, path, service] of [
-      [3000, "/api/health", "api"],
-      [3001, "/health", "vulnerable-lab"],
-      [3002, "/health", "secure-lab"],
+      [e2ePorts.API_PORT, "/api/health", "api"],
+      [e2ePorts.VULNERABLE_LAB_PORT, "/health", "vulnerable-lab"],
+      [e2ePorts.SECURE_LAB_PORT, "/health", "secure-lab"],
     ] as const) {
       const response = await request.get("http://" + host + ":" + port + path);
       expect(response.ok()).toBe(true);

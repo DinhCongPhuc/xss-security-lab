@@ -2,12 +2,12 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vitest";
-import { managementMigrations } from "../../apps/api/src/database/migrations.ts";
-import { seedCatalog } from "../../apps/api/src/repositories/labs.ts";
+import { managementMigrations } from "@xss-lab/api/migrations";
+import { seedCatalog } from "@xss-lab/api/repository";
 import {
   commentMigrations,
   initializeDatabase,
-} from "../../packages/shared-config/src/database.ts";
+} from "@xss-lab/shared-config/database";
 
 test("management migrations and catalog seed are repeatable with foreign keys enforced", () => {
   const folder = mkdtempSync(join(tmpdir(), "xss-lab-"));

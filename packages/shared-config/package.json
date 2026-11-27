@@ -1,5 +1,15 @@
 {
   "name": "@xss-lab/shared-config",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "exports": {
+    "./network": "./src/network.ts",
+    "./database": "./src/database.ts",
+    "./http": "./src/http.ts",
+    "./lab": "./src/lab.ts"
+  },
+  "dependencies": {
+    "@xss-lab/shared-types": "*",
+    "express": "^5.1.0"
+  }
 }

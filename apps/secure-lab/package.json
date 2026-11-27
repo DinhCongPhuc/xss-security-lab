@@ -2,9 +2,11 @@
   "name": "@xss-lab/secure-lab",
   "private": true,
   "type": "module",
+  "exports": {
+    "./app": "./src/app.ts",
+    "./config": "./src/config.ts"
+  },
   "dependencies": {
-    "express": "^5.1.0",
-    "@xss-lab/shared-config": "*",
-    "@xss-lab/shared-types": "*"
+    "@xss-lab/shared-config": "*"
   }
 }

@@ -34,6 +34,14 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.2.0",
-    "vitest": "^4.0.0"
+    "vitest": "^4.0.0",
+    "@xss-lab/shared-types": "*",
+    "@xss-lab/test-cases": "*"
+  },
+  "dependencies": {
+    "@xss-lab/api": "*",
+    "@xss-lab/secure-lab": "*",
+    "@xss-lab/vulnerable-lab": "*",
+    "@xss-lab/shared-config": "*"
   }
 }

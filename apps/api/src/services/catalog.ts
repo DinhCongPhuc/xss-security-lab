@@ -1,4 +1,4 @@
-import type { LabMetadata } from "../../../../packages/shared-types/src/index.ts";
+import type { LabMetadata } from "@xss-lab/shared-types";
 export const catalog = [
   { id: "LAB-01", slug: "reflected", title: "Reflected XSS" },
   { id: "LAB-02", slug: "stored", title: "Stored XSS" },

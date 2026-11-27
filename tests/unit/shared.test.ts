@@ -1,13 +1,7 @@
 import { expect, test } from "vitest";
-import {
-  loopbacks,
-  readPort,
-} from "../../packages/shared-config/src/network.ts";
-import {
-  isResultState,
-  resultStates,
-} from "../../packages/shared-types/src/index.ts";
-import { plainTextFixture } from "../../packages/test-cases/src/index.ts";
+import { loopbacks, readPort } from "@xss-lab/shared-config/network";
+import { isResultState, resultStates } from "@xss-lab/shared-types";
+import { plainTextFixture } from "@xss-lab/test-cases";
 
 test("result-state validation recognizes explicit states only", () => {
   expect(resultStates.every(isResultState)).toBe(true);

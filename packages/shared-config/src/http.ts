@@ -4,7 +4,7 @@ import express, {
   type Response,
   type NextFunction,
 } from "express";
-import { localAuthorities, webPort } from "./network.ts";
+import { localAuthorities } from "./network.ts";
 import type { ApiResponse } from "../../shared-types/src/index.ts";
 
 export function sendData<T>(response: Response, data: T) {
@@ -25,12 +25,15 @@ function sendError(
 export function createLocalApp(
   service: string,
   port: number,
-  allowWeb = false,
+  frontendPort?: number,
 ) {
   const app = express();
   app.disable("x-powered-by");
   const hosts = localAuthorities(port);
-  const webOrigins = localAuthorities(webPort).map((host) => "http://" + host);
+  const webOrigins =
+    frontendPort === undefined
+      ? []
+      : localAuthorities(frontendPort).map((host) => "http://" + host);
   app.use((request, response, next) => {
     response.once("finish", () => {
       console.info(
@@ -59,9 +62,9 @@ export function createLocalApp(
       );
     }
     const origin = request.get("origin");
-    if (allowWeb) response.vary("Origin");
+    if (frontendPort !== undefined) response.vary("Origin");
     if (origin && origin !== "http://" + host) {
-      if (!allowWeb || !webOrigins.includes(origin)) {
+      if (!webOrigins.includes(origin)) {
         return sendError(
           response,
           403,

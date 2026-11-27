@@ -6,3 +6,5 @@
 - Kiểm thử đơn vị cho validation, Supertest cho hợp đồng API và Playwright cho điều hướng và dịch vụ thật. Kiểm thử cơ sở dữ liệu phải dùng bản mẫu tạm. Báo cáo lệnh, kết quả quan sát được và các bước chưa chạy. Cấm bịa kết quả kiểm thử hoặc thí nghiệm.
 - Làm việc trên nhánh tính năng. Giữ lịch sử và tài liệu hiện hữu. Không push, merge hoặc tạo PR khi chưa được yêu cầu.
 - Definition of Done yêu cầu lockfile có thể dùng với npm ci, kiểm tra định dạng, lint, kiểu, test, build và smoke test đạt. Cập nhật tài liệu và xác minh cả hai địa chỉ loopback khi thay đổi dịch vụ.
+- Khai báo dependency tại workspace sử dụng và import qua exports nội bộ. Giữ dữ liệu runtime ngoài phạm vi tệp frontend. Kiểm thử tích hợp dùng fixture tổng hợp, listener loopback và tiến trình do phép thử sở hữu.
+- PROJECT-11 phải kiểm chứng cô lập tiến trình, hệ thống tệp, trình duyệt và mạng trước khi bổ sung chức năng cố ý dễ tổn thương.

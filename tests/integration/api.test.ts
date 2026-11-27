@@ -1,8 +1,8 @@
 import { requestLocal } from "../request-local.ts";
 import { expect, test } from "vitest";
-import { createApi } from "../../apps/api/src/app.ts";
-import { createSecureLab } from "../../apps/secure-lab/src/app.ts";
-import { createVulnerableLab } from "../../apps/vulnerable-lab/src/app.ts";
+import { createApi } from "@xss-lab/api/app";
+import { createSecureLab } from "@xss-lab/secure-lab/app";
+import { createVulnerableLab } from "@xss-lab/vulnerable-lab/app";
 
 const createRequest = () => requestLocal(createApi(3000));
 

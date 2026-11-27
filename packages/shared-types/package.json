@@ -1,5 +1,6 @@
 {
   "name": "@xss-lab/shared-types",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "exports": "./src/index.ts"
 }

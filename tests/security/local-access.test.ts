@@ -1,7 +1,7 @@
 import { requestLocal } from "../request-local.ts";
 import { expect, test } from "vitest";
-import { createApi } from "../../apps/api/src/app.ts";
-import { createSecureLab } from "../../apps/secure-lab/src/app.ts";
+import { createApi } from "@xss-lab/api/app";
+import { createSecureLab } from "@xss-lab/secure-lab/app";
 
 test("API only grants CORS to configured web origins without credentials", async () => {
   const api = await requestLocal(createApi(3000));

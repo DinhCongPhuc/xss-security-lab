@@ -4,6 +4,6 @@ Web là SPA React đi qua các route của React Router. Management API là Modu
 
 Hai Lab có ứng dụng Express, cấu hình, cổng và cơ sở dữ liệu riêng. Trình điều phối bootstrap khởi tạo các ứng dụng trong cùng tiến trình Node và dùng listener riêng theo từng địa chỉ loopback. Đây là ranh giới ứng dụng và trình duyệt. Cô lập tiến trình và mạng thuộc giai đoạn sau.
 
-Các package private chứa hợp đồng TypeScript, cấu hình HTTP và cơ sở dữ liệu dùng chung, và fixture văn bản thuần. Kiểu dữ liệu được biên dịch theo cấu trúc thư mục gốc để giữ đường dẫn nội bộ. Vite xây dựng bundle Web riêng.
+Các package private công bố các module nội bộ qua exports trong npm workspaces. Express được khai báo ở workspace sử dụng. Build máy chủ tạo module JavaScript để tái sử dụng trong monorepo và vẫn phân giải các package nội bộ qua exports TypeScript trên Node 24. Build frontend tạo bundle Vite riêng. Chạy dịch vụ development bằng trình điều phối tại `scripts/dev.mjs`.
 
-Trình chạy development kiểm tra xung đột cổng, khởi tạo dữ liệu trước khi mở listener và đóng listener cùng các kết nối SQLite khi dừng. Cổng mặc định là 5173, 3000, 3001 và 3002.
+Trình chạy development kiểm tra xung đột cổng, khởi tạo dữ liệu trước khi mở listener và đóng listener cùng các kết nối SQLite khi dừng. Cổng mặc định là 5173, 3000, 3001 và 3002. Playwright sở hữu tiến trình con, nhận readiness qua IPC và ngắt IPC để kích hoạt cleanup trên Windows. Mỗi lượt có bộ cổng và thư mục SQLite riêng.
