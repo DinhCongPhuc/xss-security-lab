@@ -30,3 +30,18 @@ export interface ApiError {
 }
 export type ApiResponse<T> =
   { ok: true; data: T } | { ok: false; error: ApiError };
+
+export type ServiceId = "api" | "vulnerable-lab" | "secure-lab";
+export type HealthStatus = "healthy" | "unhealthy" | "unreachable" | "unknown";
+export interface HealthObservation {
+  service: ServiceId;
+  status: HealthStatus;
+  observedAt: string | null;
+}
+export interface DashboardSummary {
+  catalog: readonly LabMetadata[];
+  statistics: { labCount: number; categoryCount: number };
+  services: readonly HealthObservation[];
+  availability: { progress: "unavailable"; activity: "unavailable" };
+  observedAt: string;
+}

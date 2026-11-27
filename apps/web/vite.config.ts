@@ -42,6 +42,11 @@ function localRequests(): Plugin {
 export default defineConfig({
   plugins: [localRequests(), react(), tailwindcss()],
   publicDir: false,
+  define: {
+    __MANAGEMENT_API_PORT__: JSON.stringify(
+      readPort(process.env.API_PORT, 3000),
+    ),
+  },
   resolve: { alias: { "@": resolve(root, "src") } },
   server: {
     host: "127.0.0.1",

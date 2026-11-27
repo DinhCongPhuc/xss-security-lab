@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router";
 import { routePages } from "./config/navigation.ts";
 import { Shell } from "./layouts/shell.tsx";
-import { NotFound, Overview, Placeholder } from "./pages/placeholder.tsx";
+import { NotFound, Placeholder } from "./pages/placeholder.tsx";
+import { DashboardPage } from "./features/dashboard/index.tsx";
 
 export function App() {
   return (
@@ -13,7 +14,7 @@ export function App() {
             path={page.path}
             element={
               page.path === "/" ? (
-                <Overview page={page} />
+                <DashboardPage />
               ) : (
                 <Placeholder page={page} />
               )
