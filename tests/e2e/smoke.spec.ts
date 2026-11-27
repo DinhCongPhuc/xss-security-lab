@@ -29,13 +29,13 @@ test("shell renders and navigation works without page errors", async ({
     "Kiến thức",
     "Defense Lab",
     "Phân tích mã",
-    "Nhật ký",
+    "Nhật ký bảo mật",
     "Báo cáo",
     "Cài đặt",
     "Attack Lab",
   ]) {
     await page
-      .getByRole("navigation")
+      .getByRole("navigation", { name: "Điều hướng chính" })
       .getByRole("link", { name: label, exact: true })
       .click();
     await expect(
@@ -43,9 +43,12 @@ test("shell renders and navigation works without page errors", async ({
     ).toBeVisible();
   }
   for (const label of ["Reflected XSS", "Stored XSS", "DOM-based XSS"]) {
-    await page.getByRole("link", { name: label }).click();
+    await page.getByRole("main").getByRole("link", { name: label }).click();
     await expect(page.getByRole("heading", { name: label })).toBeVisible();
-    await page.getByRole("link", { name: "Attack Lab" }).click();
+    await page
+      .getByRole("navigation", { name: "Điều hướng chính" })
+      .getByRole("link", { name: "Attack Lab", exact: true })
+      .click();
   }
   expect(errors).toEqual([]);
 });

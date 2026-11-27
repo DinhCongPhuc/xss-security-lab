@@ -40,4 +40,4 @@ npm.cmd run test:e2e
 npm.cmd run check
 ```
 
-Xem [kiến trúc](docs/ARCHITECTURE.md), [thiết kế bảo mật](docs/SECURITY-DESIGN.md) và [kế hoạch kiểm thử](docs/TEST-PLAN.md). Các tài liệu trong `docs/` là bản dự thảo từ PROJECT-07.
+Xem [kiến trúc](docs/ARCHITECTURE.md), [thiết kế bảo mật](docs/SECURITY-DESIGN.md), [kế hoạch kiểm thử](docs/TEST-PLAN.md) và [Design System](docs/DESIGN-SYSTEM.md). Các tài liệu yêu cầu và kiến trúc chưa đối chiếu với đặc tả gốc giữ trạng thái dự thảo.
