@@ -1,0 +1,12 @@
+{
+  "name": "@xss-lab/vulnerable-lab",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./app": "./src/app.ts",
+    "./config": "./src/config.ts"
+  },
+  "dependencies": {
+    "@xss-lab/shared-config": "*"
+  }
+}

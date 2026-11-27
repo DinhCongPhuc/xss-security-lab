@@ -1,0 +1,16 @@
+{
+  "name": "@xss-lab/api",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./app": "./src/app.ts",
+    "./config": "./src/config/index.ts",
+    "./migrations": "./src/database/migrations.ts",
+    "./repository": "./src/repositories/labs.ts"
+  },
+  "dependencies": {
+    "@xss-lab/shared-config": "*",
+    "@xss-lab/shared-types": "*",
+    "express": "^5.1.0"
+  }
+}
