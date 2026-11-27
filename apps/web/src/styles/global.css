@@ -4,41 +4,92 @@
 
 @theme {
   --color-background: #0b1120;
-  --color-sidebar: #111827;
-  --color-surface: #162033;
-  --color-elevated: #1e293b;
-  --color-border: #334155;
-  --color-primary: #06b6d4;
-  --color-secondary: #3b82f6;
-  --color-accent: #8b5cf6;
-  --color-success: #22c55e;
-  --color-danger: #ef4444;
-  --color-warning: #f59e0b;
-  --color-information: #38bdf8;
-  --color-foreground: #f8fafc;
-  --color-secondary-foreground: #cbd5e1;
-  --color-muted-foreground: #94a3b8;
+  --color-sidebar: #0f172a;
+  --color-surface: #111c2e;
+  --color-elevated: #19263b;
+  --color-border: #263449;
+  --color-control: #62738d;
+  --color-primary: #22d3ee;
+  --color-primary-hover: #67e8f9;
+  --color-secondary: #a5b4fc;
+  --color-active: #152e42;
+  --color-focus: #67e8f9;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-foreground: #f1f5f9;
+  --color-muted-foreground: #a0afc3;
+  --color-code: #080d17;
+  --color-overlay: #040812b8;
   --font-sans: "Inter Variable", system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", monospace;
+  --spacing: 4px;
   --radius-lg: 8px;
   --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --shadow-dialog: 0 20px 70px #04081288;
 }
 
 :root {
   color-scheme: dark;
   background: var(--color-background);
   color: var(--color-foreground);
+  --motion-fast: 140ms;
+  --motion-panel: 200ms;
+  --layer-header: 10;
+  --layer-tooltip: 20;
+  --layer-skip: 30;
+  --sidebar-expanded: 256px;
+  --sidebar-collapsed: 72px;
 }
+
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
+button:not(:disabled) {
+  cursor: pointer;
+}
+::selection {
+  background: var(--color-primary);
+  color: var(--color-code);
+}
+
+.modal[open] {
+  animation: modal-in var(--motion-panel) ease-out;
+}
+.sheet[open] {
+  animation: sheet-in var(--motion-panel) ease-out;
+}
+.modal::backdrop,
+.sheet::backdrop {
+  background: var(--color-overlay);
+}
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes sheet-in {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-panel: 0ms;
+  }
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 0ms !important;
+    transition-duration: 0ms !important;
     scroll-behavior: auto !important;
   }
 }

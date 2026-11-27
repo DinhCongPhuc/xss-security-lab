@@ -1,5 +1,9 @@
 # Thiết kế UI/UX (dự thảo)
 
-Shell tiếng Việt dùng dark mode, Inter và JetBrains Mono được đóng gói cục bộ. Màu nền #0B1120, sidebar #111827, surface #162033, elevated #1E293B, border #334155. Các màu primary, secondary, accent lần lượt là #06B6D4, #3B82F6 và #8B5CF6. Các token cho trạng thái và văn bản được định nghĩa trong global.css.
+PROJECT-08 cung cấp shell tiếng Việt theo hướng SaaS bảo mật, với nền navy, điểm nhấn cyan và indigo, Inter và JetBrains Mono đóng gói cục bộ. Các trang dùng cùng header, lưới card, trạng thái placeholder và khoảng cách. Nhãn Lab cục bộ mô tả môi trường.
 
-Sidebar rộng 256 px trên desktop và 72 px ở chế độ thu gọn hoặc màn hình hẹp. Header cao 64 px, card bo 12 px, nút bo 8 px. Shell dùng icon Lucide, nút shadcn/ui, liên kết bỏ qua điều hướng, focus nhìn thấy được và hỗ trợ reduced motion. Các trang trong bootstrap trình bày tiêu đề và mục đích ngắn gọn.
+Ở chiều rộng từ 1024 px, sidebar có chế độ 256 px hoặc 72 px. Tablet và mobile dùng drawer có tiêu đề và nút đóng. Breadcrumb rút gọn theo không gian. BF-06 gồm title theo route, focus vào main khi điều hướng, skip link, khả năng dùng bàn phím, Escape và reduced motion.
+
+PROJECT-08.1 kiểm chứng focus đến nút sidebar desktop khi drawer đóng do đổi breakpoint, Escape trả focus về nút mở mobile và tooltip thu gọn đóng khi nhấn Escape. Ở chiều cao ngắn, điều hướng cuộn riêng, footer vẫn nằm trong drawer và trang nền giữ vị trí cuộn.
+
+Xem [Design System](DESIGN-SYSTEM.md) để biết token, API thành phần và phạm vi kiểm chứng. Tài liệu giữ trạng thái dự thảo cho đến khi có đặc tả gốc để đối chiếu.
