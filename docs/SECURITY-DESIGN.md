@@ -7,4 +7,8 @@
 
 Vite giới hạn phạm vi đọc vào HTML, mã frontend và các package font. Tắt `publicDir` để tránh đường phục vụ tệp tĩnh ngoài chính sách filesystem. Giữ các deny mặc định của Vite và chặn thêm DB, sidecar và các thư mục runtime đã biết. Trình điều phối từ chối `DATA_DIR` nằm trong frontend hoặc `node_modules`, kể cả khi đường dẫn thực trỏ vào đó. Giữ mã nguồn, plugin, dependency và liên kết hệ thống tệp của Vite trong phạm vi tin cậy. Đây là chính sách máy chủ development, còn ranh giới hệ điều hành thuộc PROJECT-11.
 
+Health Dashboard chỉ kiểm tra ba đường dẫn cố định trên địa chỉ loopback dạng số và cổng lấy từ cấu hình startup đáng tin cậy. Deadline và giới hạn kích thước áp dụng cho từng phản hồi. Client không chọn đích, upstream không nhận credentials và response chỉ chứa trạng thái chuẩn hóa với timestamp. Health không phải xác nhận độ an toàn của dịch vụ.
+
+Mỗi collector chia sẻ một lượt health đang chạy giữa các request chồng nhau. Cơ chế giảm công việc trùng, còn số lượng kết nối vào, tần suất lượt nối tiếp và điều phối giữa các tiến trình nằm ngoài phạm vi của nó.
+
 Trước khi bổ sung chức năng thực nghiệm, cần thiết kế và kiểm thử một browser profile dùng một lần, các tiến trình với quyền tối thiểu và sự cô lập hệ thống tệp, cùng chính sách mạng hạn chế egress và chặn đường dẫn từ Lab sang Management hoặc dịch vụ cục bộ khác. Iframe phải giới hạn quyền bằng sandbox, giữ origin opaque nếu khả thi, cấm điều hướng top-level và giới hạn embedding theo thiết kế đã được kiểm tra. Kênh truyền thông thí nghiệm cần kiểm tra nguồn, schema, token gắn với lần chạy và thời hạn. Với opaque origin, không dùng giá trị null làm bằng chứng nhận dạng. Management API chỉ xử lý dữ liệu hợp lệ và không thực thi mã nhận từ bên ngoài.

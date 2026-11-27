@@ -6,4 +6,6 @@ PROJECT-08 cung cấp shell tiếng Việt theo hướng SaaS bảo mật, với
 
 PROJECT-08.1 kiểm chứng focus đến nút sidebar desktop khi drawer đóng do đổi breakpoint, Escape trả focus về nút mở mobile và tooltip thu gọn đóng khi nhấn Escape. Ở chiều cao ngắn, điều hướng cuộn riêng, footer vẫn nằm trong drawer và trang nền giữ vị trí cuộn.
 
+PROJECT-09 dùng shell hiện có cho Dashboard, với danh mục thật, health cục bộ, trạng thái tải và lỗi, truy cập nhanh và lộ trình học. Xem [Dashboard Design](DASHBOARD-DESIGN.md).
+
 Xem [Design System](DESIGN-SYSTEM.md) để biết token, API thành phần và phạm vi kiểm chứng. Tài liệu giữ trạng thái dự thảo cho đến khi có đặc tả gốc để đối chiếu.

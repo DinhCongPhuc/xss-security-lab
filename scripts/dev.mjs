@@ -73,7 +73,15 @@ async function start() {
 
   for (const [index, host] of loopbacks.entries()) {
     for (const [config, createApp] of [
-      [api, (port) => createApi(port, frontendPort)],
+      [
+        api,
+        (port) =>
+          createApi(port, frontendPort, {
+            host,
+            vulnerable: vulnerable.port,
+            secure: secure.port,
+          }),
+      ],
       [vulnerable, createVulnerableLab],
       [secure, createSecureLab],
     ]) {

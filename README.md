@@ -32,6 +32,18 @@ Ba tệp SQLite là `management.db`, `vulnerable.db` và `secure.db`. Có thể 
 
 ## Kiểm tra
 
+Dashboard đọc danh mục và ba kết quả health thông qua Management API. Dùng nút **Làm mới** để kiểm tra lại. Tiến độ và nhật ký thực hành chưa có dữ liệu. Xem [Dashboard Design](docs/DASHBOARD-DESIGN.md) cho hợp đồng và cách chụp ảnh.
+
+Cổng API mặc định là `3000`. `npm run dev` đọc `.env` qua trình khởi động Node, rồi Vite và Management API dùng cùng `API_PORT`. `npm run build` đọc `API_PORT` từ môi trường của tiến trình build. Chỉ đặt cổng trong `.env` sẽ không đổi cổng nhúng khi build. Ví dụ trong PowerShell:
+
+```powershell
+$env:API_PORT = "24000"
+npm run build
+Remove-Item Env:API_PORT
+```
+
+Nếu PowerShell chặn shim `npm.ps1`, dùng `npm.cmd run build`. Management API phải lắng nghe trên cổng đã nhúng. Build lại frontend khi đổi cổng. Playwright tiếp tục cấp `E2E_API_PORT` cho tiến trình dev do test sở hữu, độc lập với phiên dev thông thường.
+
 Playwright khởi chạy tiến trình riêng trên các cổng Web/API/Vulnerable Lab/Secure Lab lần lượt là `15173`, `13000`, `13001`, `13002`. Đặt `E2E_WEB_PORT`, `E2E_API_PORT`, `E2E_VULNERABLE_LAB_PORT` và `E2E_SECURE_LAB_PORT` trong PowerShell để đổi cổng. Dữ liệu mỗi lượt nằm trong thư mục tạm của hệ điều hành và được dọn lúc kết thúc. Có thể giữ phiên dev trên các cổng mặc định trong lúc chạy Playwright.
 
 ```powershell

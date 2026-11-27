@@ -23,6 +23,7 @@
     "tailwindcss": "^4.1.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "@xss-lab/shared-config": "*"
+    "@xss-lab/shared-config": "*",
+    "@xss-lab/shared-types": "*"
   }
 }
